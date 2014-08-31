@@ -15,6 +15,7 @@ define uwsgi::siteconfig($source,$owner,$group){
   }
   concat {"/etc/rc.local":
     #ensure => present,
+    mode    => 755, 
   } 
   concat::fragment {'00_rc.local_header':
     target  => '/etc/rc.local',
