@@ -12,7 +12,8 @@ Create a new server, naming it mujinraveagent{#}, where {#} is a number greater 
 
 	vim /etc/hosts
 
-#add row for master ip address, pointing to puppet puppetmaster
+add row for master ip address, pointing to puppet puppetmaster
+
 	107.170.235.244 puppet puppetmaster #Puppet master DNS aliases and Puppet master FQDN
 
 
