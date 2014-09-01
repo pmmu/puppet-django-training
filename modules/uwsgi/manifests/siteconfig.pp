@@ -4,7 +4,7 @@ define uwsgi::siteconfig($source,$owner,$group){
     source  => $source,
     owner   => $owner,
     group   => $group,
-    mode    => 664,
+    mode    => 0664,
     require => Class['uwsgi'],
     notify  => Class["uwsgi::service"],
   }
@@ -12,11 +12,11 @@ define uwsgi::siteconfig($source,$owner,$group){
     ensure => directory,
     owner  => $owner,
     group  => $group,
-    mode   => 664,
+    mode   => 0664,
   }
   concat {"/etc/rc.local":
     #ensure => present,
-    mode    => 755, 
+    mode    => 0755, 
   } 
   concat::fragment {'00_rc.local_header':
     target  => '/etc/rc.local',
