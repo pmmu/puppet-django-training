@@ -1,4 +1,4 @@
-Standup new Debian Wheezy 7.0 Puppet Agent
+##Standup new Debian Wheezy 7.0 Puppet Agent
 ===========================================================
 Create a new server, naming it mujinraveagent{#}, where {#} is a number greater than 1
 
