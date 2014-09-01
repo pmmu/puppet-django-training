@@ -78,7 +78,7 @@ node /\w*raveagent\d*$/ {
     ensure  => directory,
     owner   => 'www-data',
     group   => 'www-data',
-    mode    => 664,
+    mode    => 774,
   }
   
   nginx::siteconfig {'mujin_nginx.conf':

@@ -4,7 +4,7 @@ define uwsgi::siteconfig($source,$owner,$group){
     source  => $source,
     owner   => $owner,
     group   => $group,
-    mode    => 0644,
+    mode    => 664,
     require => Class['uwsgi'],
     notify  => Class["uwsgi::service"],
   }
@@ -12,6 +12,7 @@ define uwsgi::siteconfig($source,$owner,$group){
     ensure => directory,
     owner  => $owner,
     group  => $group,
+    mode   => 664,
   }
   concat {"/etc/rc.local":
     #ensure => present,
