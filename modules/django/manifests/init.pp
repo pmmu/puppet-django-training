@@ -1,7 +1,7 @@
 # class django
 #
 # to install django and essentials
-#
+# todo:test with 2.4.1 djangorestframework. 
 #
 class django {
     package {
