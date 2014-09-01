@@ -80,6 +80,7 @@ node /\w*raveagent\d*$/ {
     group   => 'www-data',
     mode    => 0774,
     recurse => true,
+    ignore  => '*.sock',
   }
   
   nginx::siteconfig {'mujin_nginx.conf':
