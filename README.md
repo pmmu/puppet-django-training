@@ -1,5 +1,5 @@
 #Puppet Configuration Code for Puppet Agents running the RoboRavers app and API
-This repository contains all of the puppet configuration code that would live on a puppetmaster server running CentOS6.5.  The master server currently running this is https://107.170.235.244/
+This repository contains all of the puppet configuration code that would live on a puppetmaster server running CentOS6.5 for creating servers to run the RoboRaver app and API (found here: https://github.com/cinvoke/mujin).  The master server currently running this is https://107.170.235.244/
 
 ##Standup new Debian Wheezy 7.0 Puppet Agent
 Create a new server, naming it mujinraveagent{#}, where {#} is a number greater than 1
