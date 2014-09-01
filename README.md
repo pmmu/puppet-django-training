@@ -55,11 +55,6 @@ Restart the agent server to automatically start Uwsgi and the app.
 	http://<serverip>:8000/robots for the browsable API
 
 
-####NOTE:
-If the site throws a permissions error, which I saw once during testing, you may need to run this on the agent:
-
-	chown www-data:www-data -R /opt/mujin
-
 
 ###Deleting an agent
 
