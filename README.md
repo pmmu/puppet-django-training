@@ -1,8 +1,8 @@
-#Puppet Configuration Code for Puppet Agents running the RoboRavers app and API
-This repository contains all of the puppet configuration code that would live on a puppetmaster server running CentOS6.5 for creating servers to run the RoboRaver app and API (found here: https://github.com/cinvoke/mujin).  The master server currently running this is https://107.170.235.244/
+#Puppet Configuration Code for Puppet Agents running Django
+This repository contains all of the puppet configuration code that would live on a puppetmaster server running CentOS for creating servers to run the test django app (found here: https://github.com/cinvoke/mujin).  
 
 ##Standup new Debian Wheezy 7.0 Puppet Agent
-Create a new server, naming it mujinraveagent{#}, where {#} is a number greater than 1
+Create a new server, naming it djangoagent{#}, where {#} is a number greater than 1
 
 
 ###Install some basic needs
@@ -17,7 +17,7 @@ Create a new server, naming it mujinraveagent{#}, where {#} is a number greater 
 
 add row for master ip address, pointing to puppet puppetmaster
 
-	107.170.235.244 puppet puppetmaster #Puppet master DNS aliases and Puppet master FQDN
+	<masterip> puppet puppetmaster #Puppet master DNS aliases and Puppet master FQDN
 
 
 
@@ -27,15 +27,15 @@ add row for master ip address, pointing to puppet puppetmaster
 
 Goto PE console on master:
 
-	https://107.170.235.244/
+	https://<masterip>:3000
 
 and approve the node request (top right)
 
-to test (it will happen automatically in 30 minutes) run...
+to test run...
 
 	puppet agent --test
 	
-initial setup runs through full make install of collada-dom and open-rave, taking longer than subsequent runs
+initial setup runs through full make install of django, taking longer than subsequent runs
 
 
 ###Daemonize Puppet Agent and Restart
@@ -51,8 +51,6 @@ Restart the agent server to automatically start Uwsgi and the app.
 ###Navigate to the site
 
 	http://<serverip>:8000/robot for the webapp
-	
-	http://<serverip>:8000/robots for the browsable API
 
 
 
@@ -60,4 +58,4 @@ Restart the agent server to automatically start Uwsgi and the app.
 
 If you ever have to remove an agent, remove from puppet ee console, then run this on the master.
 
-	puppet cert clean mujinraveagent{#}
+	puppet cert clean djangoagent{#}
