@@ -47,7 +47,7 @@ node /\w*puppetmaster\d*$/ {
   include ssh
 }
 
-node /\w*raveagent\d*$/ {
+node /\w*djangoagent\d*$/ {
   include "${operatingsystem}setup"
   include git
   include ssh
@@ -55,13 +55,12 @@ node /\w*raveagent\d*$/ {
   include nginx
   include django
   include uwsgi
-  include openrave
 
   user::create {'jenkins':
     password   => '$1$963viJj/$VUiSdG/Sjsj4bsQD1uXTX0',
     groups     => 'www-data',
     sshkeytype => 'ssh-rsa',
-    sshkey     => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAymAbZVK7I9ScUqIZqvyj3E37O+Vxd6CL1bRxwy6y0Knjf2OS4a0M9ZxlqTSqp3p00+8iVTsFoytQf3OVHpIJzCfqgqHx4voINPTlMzR3jwPAWnw9ws2nhL6QB1sE6JmBrFRXcmDeozBEm5hLrfWLIadtYLjNoYEU/oeKRgYlGVv7cIF1vhzhxxN2NEL6zUnXw/8tRBDcfcibwvBd8a73mXHov/PcpiZWB3bB3OfoK1khtvQra9QRJaYN4sr2o4vsBK70KVCYGKqL4My+jZxmjJnIolFaVu5G4/94ISZOWgDZ8aDJuST+c2u9ZjkfVSON9jIYOySiudsR7w7OIhQBcQ==',
+    sshkey     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDMO9a66fvqDHWERw8jjk6Ls8KBM8zDQVI7fbFlt7xPIH+pjPlR0QxZlS8a108dW7WsDBxwd3qycvENfeED7AY4DmhW23UpnlPEnQ4O/0+lRo0rfymVvaE5F+PvooYi+z0F7XAFnBSwwhYhyUvf6KqATmV4ALM+NU4PAOa5fUJskAIzIQuVfnIzMyGSruOnLCvnmw/qZDjhYM6abSvckUmIrYPwN6rYnO8L4t4pQ4dFZVtwLEhHBCPk3VLcPd0Z+TTAn+jzbi58+0iTlKh7/svTvawG9KAI4pWfiHQueWPiZ1HXPmH7QRi1MRaQjeKg9cPFMQtZUjQSUB8tVVzE/f/V',
     #sshkey     => '' #ssh public key without type and user indicators  
 }
 
@@ -69,12 +68,12 @@ node /\w*raveagent\d*$/ {
     ensure => directory,
   }~>
   #clone django git code into the server
-  git::clone {'mujin_rave':
-    repo    => 'https://github.com/cinvoke/mujin.git',
+  git::clone {'djangoDI':
+    repo    => 'https://github.com/pmmu/djangoCI.git',
     path    => '/opt',
-    dir     => 'mujin',
+    dir     => 'app',
   }~>
-  file {'/opt/mujin':
+  file {'/opt/app':
     ensure  => directory,
     owner   => 'www-data',
     group   => 'www-data',
@@ -83,13 +82,13 @@ node /\w*raveagent\d*$/ {
     ignore  => '*.sock',
   }
   
-  nginx::siteconfig {'mujin_nginx.conf':
-    source => 'puppet:///modules/nginx/mujin_nginx.conf',
+  nginx::siteconfig {'django_nginx.conf':
+    source => 'puppet:///modules/nginx/django_nginx.conf',
     owner  => 'www-data',
     group  => 'www-data'
   }
-  uwsgi::siteconfig{'mujin_uwsgi.ini':
-    source => 'puppet:///modules/uwsgi/mujin_uwsgi.ini',
+  uwsgi::siteconfig{'django_uwsgi.ini':
+    source => 'puppet:///modules/uwsgi/django_uwsgi.ini',
     owner  => 'www-data',
     group  => 'www-data',
   }
