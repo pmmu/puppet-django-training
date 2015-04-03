@@ -1,5 +1,5 @@
 #Puppet Configuration Code for Puppet Agents running Django
-This repository contains all of the puppet configuration code that would live on a puppetmaster server running CentOS for creating servers to run the test django app (found here: https://github.com/cinvoke/mujin).  
+This repository contains all of the puppet configuration code that would live on a puppetmaster server running CentOS for creating servers to run the test django app (found here: https://github.com/pmmu/djangoCI).  
 
 ##Standup new Debian Wheezy 7.0 Puppet Agent
 Create a new server, naming it djangoagent{#}, where {#} is a number greater than 1
