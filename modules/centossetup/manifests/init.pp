@@ -14,9 +14,7 @@ class centossetup {
   }
 
   package {
-    "epel-release"     : ensure   => installed, 
-                         source   => "http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm",
-                         provider => rpm;
+    "epel-release"     : ensure   => installed;
     "zlib-devel"       : ensure   => installed;
     "openssl-devel"    : ensure   => installed;
     "sqlite-devel"     : ensure   => installed;
